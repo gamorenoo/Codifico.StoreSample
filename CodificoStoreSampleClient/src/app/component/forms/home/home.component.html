@@ -1,0 +1,25 @@
+<dx-scroll-view [height]="popupContentHeight">
+    <dx-data-grid [dataSource]="listPredictedOrders" [allowColumnResizing]="true" [hoverStateEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" [filterRow]="{visible:true}" [columnHidingEnabled]="true"
+        keyExpr="customerId">
+        <dxo-selection mode="single"></dxo-selection>
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 30]" [showInfo]="true">
+        </dxo-pager>
+        <dxi-column dataField="customerName" caption="Customer Name"></dxi-column>
+        <dxi-column dataField="lastOrderDate" caption="Last Order Date"></dxi-column>
+        <dxi-column dataField="nextPredicatedOrder" caption="Next Predicted Order"></dxi-column>
+        <dxi-column type="buttons">
+            <dxi-button template="myCommand2">
+                <div *dxTemplate="let data of 'myCommand2'">
+                    <dx-button (onClick)="viewOrders($event, data)" hint="VIEW ORDERS" style="margin-right: 5px;"> <span style="color: red ;">VIEW ORDERS</span>
+                    </dx-button>
+                    <dx-button (onClick)="newOrders($event, data)" hint="NEW ORDERS"> <span style="color: green ;">NEW ORDERS</span>
+                    </dx-button>
+                </div>
+            </dxi-button>
+        </dxi-column>
+    </dx-data-grid>
+
+    <!-- Modals -->
+    <app-orders-view *ngIf="showPopupOrdersView" [showPopup]="showPopupOrdersView" [currentPredictedOrders]="currentPredictedOrders" (closePopup)="closePopupOrdersView()"></app-orders-view>
+    <app-orders-new *ngIf="showPopupOrdersNew" [showPopup]="showPopupOrdersNew" [currentPredictedOrders]="currentPredictedOrders" (closePopup)="closePopupOrdersNew()"></app-orders-new>

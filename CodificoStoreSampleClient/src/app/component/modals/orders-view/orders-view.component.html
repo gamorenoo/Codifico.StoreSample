@@ -1,0 +1,19 @@
+<dx-popup [elementAttr]="{ id: popUpId }" [fullScreen]="false" [title]="titlePopUp" *ngIf="showPopup" [(visible)]="showPopup" width="90%" [height]="popupHeight" [showTitle]="true" [dragEnabled]="false" [closeOnOutsideClick]="false" [toolbarItems]="toolbarItemsPopup"
+    [showCloseButton]="false">
+    <div *dxTemplate="let data of 'content'">
+        <dx-scroll-view [height]="popupContentHeight">
+            <dx-data-grid [dataSource]="listOrders" [allowColumnResizing]="true" [hoverStateEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" [filterRow]="{visible:false}" [columnHidingEnabled]="true" keyExpr="orderid">
+                <dxo-selection mode="single"></dxo-selection>
+                <dxo-paging [pageSize]="10"></dxo-paging>
+                <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 30]" [showInfo]="true">
+                </dxo-pager>
+                <dxi-column dataField="orderid" caption="Order Id"></dxi-column>
+                <dxi-column dataField="requireddate" caption="Required Date"></dxi-column>
+                <dxi-column dataField="shippeddate" caption="Shipped Date"></dxi-column>
+                <dxi-column dataField="shipname" caption="Ship Name"></dxi-column>
+                <dxi-column dataField="shipaddress" caption="Ship Address"></dxi-column>
+                <dxi-column dataField="shipcity" caption="Ship City"></dxi-column>
+            </dx-data-grid>
+        </dx-scroll-view>
+    </div>
+</dx-popup>
