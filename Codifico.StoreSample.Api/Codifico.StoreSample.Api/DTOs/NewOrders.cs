@@ -10,6 +10,7 @@ namespace Codifico.StoreSample.Api.DTOs
     {
         public int Orderid { get; set; }
         public int Empid { get; set; }
+        public int? Custid { get; set; }
         public int Shipperid { get; set; }
         public string Shipname { get; set; }
         public string Shipaddress { get; set; }

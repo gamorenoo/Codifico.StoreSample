@@ -1,5 +1,5 @@
-<dx-popup [elementAttr]="{ id: popUpId }" [fullScreen]="false" [title]="titlePopUp" *ngIf="showPopup" [(visible)]="showPopup" width="90%" [height]="popupHeight" [showTitle]="true" [dragEnabled]="false" [closeOnOutsideClick]="false" [toolbarItems]="toolbarItemsPopup"
-    [showCloseButton]="false">
+<dx-popup [elementAttr]="{ id: popUpId }" (onContentReady)="onContentReady($event)" [fullScreen]="false" [title]="titlePopUp" *ngIf="showPopup" [(visible)]="showPopup" width="90%" [height]="popupHeight" [showTitle]="true" [dragEnabled]="false" [closeOnOutsideClick]="false"
+    [toolbarItems]="toolbarItemsPopup" [showCloseButton]="false">
     <div *dxTemplate="let data of 'content'">
         <dx-scroll-view [height]="popupContentHeight">
             <dx-data-grid [dataSource]="listOrders" [allowColumnResizing]="true" [hoverStateEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" [filterRow]="{visible:false}" [columnHidingEnabled]="true" keyExpr="orderid">

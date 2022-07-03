@@ -9,8 +9,9 @@ export class Orders {
 
 export class NewOrder {
     public orderid : number = 0;
-    public empid : number = 0;
-    public shipperid: number = 0;
+    public custid: any = null;
+    public empid : any = null;
+    public shipperid: any = null;
     public shipname:string = '';
     public shipaddress: string = '';
     public shipcity: string = '';
@@ -24,7 +25,7 @@ export class NewOrder {
 
 export class OrdersDetail {
     public orderid : number = 0;
-    public productid: number = 0;
+    public productid: any = null;
     public unitprice: number = 0;
     public qty: number = 0;
     public discount: number = 0;
