@@ -1,4 +1,5 @@
-﻿using Codifico.StoreSample.Api.Domain.Entities;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
+using Codifico.StoreSample.Api.Domain.Entities;
 using Codifico.StoreSample.Api.Domain.Services;
 using Codifico.StoreSample.Api.DTOs;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Codifico.StoreSample.Api.Application.Services
 {
-    public class OrdersAppService
+    public class OrdersAppService: IOrdersAppService
     {
         private OrdersDomainService _ordersDomainService;
 
@@ -17,11 +18,12 @@ namespace Codifico.StoreSample.Api.Application.Services
             _ordersDomainService = ordersDomainService;
         }
 
-        public async Task<IEnumerable<Orders>> getByclient(int custid)
+        public async Task<List<Orders>> getByclient(int custid)
         {
             try
             {
-                return await _ordersDomainService.getByclient(custid);
+                var result = await _ordersDomainService.getByclient(custid);
+                return result.ToList();
             }
             catch (Exception ex)
             {
@@ -43,11 +45,12 @@ namespace Codifico.StoreSample.Api.Application.Services
             }
         }
 
-        public async Task<IEnumerable<PredictedOrders>> getPredictedOrders()
+        public async Task<List<PredictedOrders>> getPredictedOrders()
         {
             try
             {
-                return await _ordersDomainService.getPredictedOrders();
+                var result = await _ordersDomainService.getPredictedOrders();
+                return result.ToList();
             }
             catch (Exception ex)
             {

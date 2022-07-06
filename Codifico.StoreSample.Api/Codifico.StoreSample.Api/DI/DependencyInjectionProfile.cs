@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Codifico.StoreSample.Api.Domain.Services;
 using Codifico.StoreSample.Api.Application.Services;
+using Codifico.StoreSample.Api.Application.Contracts;
 
 namespace Codifico.StoreSample.Api.DI
 {
@@ -38,10 +39,10 @@ namespace Codifico.StoreSample.Api.DI
             services.AddTransient<ProductsDomainService>();
             services.AddTransient<OrdersDomainService>();
 
-            services.AddTransient<EmployeesAppService>();
-            services.AddTransient<ShippersAppService>();
-            services.AddTransient<ProductsAppService>();
-            services.AddTransient<OrdersAppService>();
+            services.AddTransient<IEmployeesAppService, EmployeesAppService>();
+            services.AddTransient<IShippersAppService, ShippersAppService>();
+            services.AddTransient<IProductsAppService, ProductsAppService>();
+            services.AddTransient<IOrdersAppService, OrdersAppService>();
 
         }
     }

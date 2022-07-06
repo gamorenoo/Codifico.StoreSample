@@ -1,4 +1,5 @@
-﻿using Codifico.StoreSample.Api.Application.Services;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
+using Codifico.StoreSample.Api.Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,8 +13,8 @@ namespace Codifico.StoreSample.Api.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private EmployeesAppService _employeesAppService;
-        public EmployeesController(EmployeesAppService employeesAppService) {
+        private IEmployeesAppService _employeesAppService;
+        public EmployeesController(IEmployeesAppService employeesAppService) {
             _employeesAppService = employeesAppService;
         }
 

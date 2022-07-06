@@ -1,4 +1,5 @@
-﻿using Codifico.StoreSample.Api.Domain.Entities;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
+using Codifico.StoreSample.Api.Domain.Entities;
 using Codifico.StoreSample.Api.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Codifico.StoreSample.Api.Application.Services
 {
-    public class ShippersAppService
+    public class ShippersAppService : IShippersAppService
     {
         private ShippersDomainService _shippersDomainService;
 
@@ -16,11 +17,12 @@ namespace Codifico.StoreSample.Api.Application.Services
             _shippersDomainService = shippersDomainService;
         }
 
-        public async Task<IEnumerable<Shippers>> getAll()
+        public async Task<List<Shippers>> getAll()
         {
             try
             {
-                return await _shippersDomainService.getAll();
+                var result = await _shippersDomainService.getAll();
+                return result.ToList();
             }
             catch (Exception ex)
             {
