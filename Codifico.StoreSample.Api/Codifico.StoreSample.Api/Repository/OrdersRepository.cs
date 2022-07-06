@@ -42,8 +42,8 @@ namespace Codifico.StoreSample.Api.Repository
                 //                    + "','" + orders.Shipcountry + "')";
                 //_context.Database.ExecuteSqlRaw(sqlInsert);
 
-                string sqlInsert = string.Format("EXECUTE Sales.CreateOrder @empid = {0} , @shipperid = {1}, @shipname = '{2}', @shipaddress = '{3}', @shipcity = '{4}', @orderdate = '{5}', @requireddate = '{6}', @shippeddate = '{7}', @freight = '{8}', @shipcountry = '{9}', @productid = {10}, @unitprice = {11}, @qty = {12}, @discount = '{13}'",
-                                    orders.Empid, orders.Shipperid, orders.Shipname, orders.Shipaddress, orders.Shipcity, orders.Orderdate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Requireddate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Shippeddate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Freight, orders.Shipcountry, orders.OrdersDetail.Productid, orders.OrdersDetail.Unitprice, orders.OrdersDetail.Qty, orders.OrdersDetail.Discount);
+                string sqlInsert = string.Format("EXECUTE Sales.CreateOrder @empid = {0} , @shipperid = {1}, @shipname = '{2}', @shipaddress = '{3}', @shipcity = '{4}', @orderdate = '{5}', @requireddate = '{6}', @shippeddate = '{7}', @freight = '{8}', @shipcountry = '{9}', @productid = {10}, @unitprice = {11}, @qty = {12}, @discount = '{13}', @custid = {14}",
+                                    orders.Empid, orders.Shipperid, orders.Shipname, orders.Shipaddress, orders.Shipcity, orders.Orderdate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Requireddate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Shippeddate.ToString("yyyy-MM-dd HH:mm:ss"), orders.Freight, orders.Shipcountry, orders.OrdersDetail.Productid, orders.OrdersDetail.Unitprice, orders.OrdersDetail.Qty, orders.OrdersDetail.Discount, orders.Custid);
 
                 orderId = _context.Orders.FromSqlRaw(sqlInsert).AsEnumerable().Select(x => x.Orderid).FirstOrDefault();
 

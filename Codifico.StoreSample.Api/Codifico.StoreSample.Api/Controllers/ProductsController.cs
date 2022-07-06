@@ -1,4 +1,5 @@
-﻿using Codifico.StoreSample.Api.Application.Services;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
+using Codifico.StoreSample.Api.Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,8 +13,8 @@ namespace Codifico.StoreSample.Api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private ProductsAppService _productsAppService;
-        public ProductsController(ProductsAppService productsAppService)
+        private IProductsAppService _productsAppService;
+        public ProductsController(IProductsAppService productsAppService)
         {
             _productsAppService = productsAppService;
         }

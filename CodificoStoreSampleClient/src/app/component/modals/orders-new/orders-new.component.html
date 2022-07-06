@@ -1,8 +1,8 @@
-<dx-popup [elementAttr]="{ id: popUpId }" [fullScreen]="false" [title]="titlePopUp" *ngIf="showPopup" [(visible)]="showPopup" width="90%" [height]="popupHeight" [showTitle]="true" [dragEnabled]="false" [closeOnOutsideClick]="false" [toolbarItems]="toolbarItemsPopup"
-    [showCloseButton]="false">
+<dx-popup [elementAttr]="{ id: popUpId }" style="background-color: red;" (onContentReady)="onContentReady($event)" [fullScreen]="false" [title]="titlePopUp" *ngIf="showPopup" [(visible)]="showPopup" width="90%" [height]="popupHeight" [showTitle]="true"
+    [dragEnabled]="false" [closeOnOutsideClick]="false" [toolbarItems]="toolbarItemsPopup" [showCloseButton]="false">
     <div *dxTemplate="let data of 'content'">
         <dx-scroll-view [height]="popupContentHeight">
-            <dx-form #formOrder [elementAttr]="{ id: formId }" [formData]="newOrder" [showColonAfterLabel]="false" [colCount]="3" labelLocation="top" [minColWidth]="300" validationGroup="taskData" visible="true">
+            <dx-form #formNewOrder id="formNewOrder" [elementAttr]="{ id: formId }" [formData]="newOrder" [showColonAfterLabel]="false" [colCount]="3" labelLocation="top" [minColWidth]="300">
 
                 <dxi-item [colSpan]="3" #template>
                     <div>
@@ -13,65 +13,65 @@
                 <dxi-item editorType="dxSelectBox" [colSpan]="2" dataField="empid" [editorOptions]="{ dataSource: empleyees, valueExpr: 'empid', displayExpr: 'fullName', showClearButton: 'true', searchEnabled: 'true' }">
                     <dxo-label text="Employee">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item editorType="dxSelectBox" [colSpan]="1" dataField="shipperid" [editorOptions]="{ dataSource: shippers, valueExpr: 'shipperid', displayExpr: 'companyname', showClearButton: 'true', searchEnabled: 'true' }">
                     <dxo-label text="Shipper">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
 
                 <dxi-item editorType="dxTextBox" [colSpan]="3" dataField="shipname" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Ship Name">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
 
                 <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="shipaddress" [editorOptions]="{ showClearButton: 'true' }">
-                    <dxo-label text="Ship Addres">
+                    <dxo-label text="Ship Address">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="shipcity" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Ship City">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="shipcountry" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Ship Country">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
 
                 <dxi-item [colSpan]="1" dataField="orderdate" editorType="dxDateBox" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Order Date">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item [colSpan]="1" dataField="requireddate" editorType="dxDateBox" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Required Date">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
                 <dxi-item [colSpan]="1" dataField="shippeddate" editorType="dxDateBox" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Sipped Date">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
 
-                <dxi-item editorType="dxTextBox" [colSpan]="3" dataField="Freight" [editorOptions]="{ showClearButton: 'true' }">
+                <dxi-item editorType="dxNumberBox" [colSpan]="3" dataField="Freight" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Freight">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
 
@@ -85,25 +85,25 @@
                 <dxi-item editorType="dxSelectBox" [colSpan]="3" dataField="ordersDetail.productid" [editorOptions]="{ dataSource: products, valueExpr: 'productid', displayExpr: 'productname', showClearButton: 'true', searchEnabled: 'true' }">
                     <dxo-label text="Product">
                     </dxo-label>
-                    <dxi-validation-rule type="required" [message]="'validationMessage.required' |translate">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
-                <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="ordersDetail.unitprice" [editorOptions]="{ showClearButton: 'true' }">
+                <dxi-item editorType="dxNumberBox" [colSpan]="1" dataField="ordersDetail.unitprice" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Unit Price">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
-                <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="ordersDetail.qty" [editorOptions]="{ showClearButton: 'true' }">
+                <dxi-item editorType="dxNumberBox" [colSpan]="1" dataField="ordersDetail.qty" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Quantity">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
-                <dxi-item editorType="dxTextBox" [colSpan]="1" dataField="ordersDetail.discount" [editorOptions]="{ showClearButton: 'true' }">
+                <dxi-item editorType="dxNumberBox" [colSpan]="1" dataField="ordersDetail.discount" [editorOptions]="{ showClearButton: 'true' }">
                     <dxo-label text="Discount">
                     </dxo-label>
-                    <dxi-validation-rule type="required" message="Campo requerido">
+                    <dxi-validation-rule type="required" message="required">
                     </dxi-validation-rule>
                 </dxi-item>
             </dx-form>

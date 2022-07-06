@@ -1,7 +1,7 @@
 <dx-scroll-view [height]="popupContentHeight">
-    <dx-data-grid [dataSource]="listPredictedOrders" [allowColumnResizing]="true" [hoverStateEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" [filterRow]="{visible:true}" [columnHidingEnabled]="true"
+    <dx-data-grid [dataSource]="listPredictedOrders" [allowColumnResizing]="true" [hoverStateEnabled]="true" [showColumnLines]="true" [showRowLines]="true" [showBorders]="true" [columnAutoWidth]="true" [filterRow]="{visible:false}" [columnHidingEnabled]="true"
         keyExpr="customerId">
-        <dxo-selection mode="single"></dxo-selection>
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
         <dxo-paging [pageSize]="10"></dxo-paging>
         <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 30]" [showInfo]="true">
         </dxo-pager>

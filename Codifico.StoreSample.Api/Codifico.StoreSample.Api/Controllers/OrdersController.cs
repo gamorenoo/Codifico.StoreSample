@@ -1,4 +1,5 @@
-﻿using Codifico.StoreSample.Api.Application.Services;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
+using Codifico.StoreSample.Api.Application.Services;
 using Codifico.StoreSample.Api.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +14,8 @@ namespace Codifico.StoreSample.Api.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        private OrdersAppService _ordersAppService;
-        public OrdersController(OrdersAppService ordersAppService)
+        private IOrdersAppService _ordersAppService;
+        public OrdersController(IOrdersAppService ordersAppService)
         {
             _ordersAppService = ordersAppService;
         }

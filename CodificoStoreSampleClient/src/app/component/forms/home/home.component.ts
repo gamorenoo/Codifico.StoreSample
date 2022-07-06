@@ -37,11 +37,12 @@ export class HomeComponent implements OnInit {
 
   closePopupOrdersNew(){
     this.showPopupOrdersNew = false;
+    this.getPredictedOrders();
   }
 
   newOrders(e: any, row: any){
     this.currentPredictedOrders = row.data as PredictedOrders;
-    this.showPopupOrdersView=true;
+    this.showPopupOrdersNew = true;
   }
 
   popupContentHeight = () => {

@@ -38,14 +38,15 @@ CREATE PROCEDURE Sales.CreateOrder
 	@productid int,
 	@unitprice money,
 	@qty smallint,
-	@discount numeric(18,2)
+	@discount numeric(18,2),
+	@custid int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	SET NOCOUNT ON;
 	DECLARE @newOrderId int;
-	INSERT INTO Sales.Orders(empid, shipperid, shipname, shipaddress, shipcity, orderdate, requireddate, shippeddate, freight, shipcountry)
-	VALUES(@empid, @shipperid, @shipname, @shipaddress, @shipcity, @orderdate, @requireddate, @shippeddate, @freight, @shipcountry);
+	INSERT INTO Sales.Orders(empid, shipperid, shipname, shipaddress, shipcity, orderdate, requireddate, shippeddate, freight, shipcountry,custid)
+	VALUES(@empid, @shipperid, @shipname, @shipaddress, @shipcity, @orderdate, @requireddate, @shippeddate, @freight, @shipcountry, @custid);
 
 	SELECT @newOrderId = @@IDENTITY;
 	INSERT INTO Sales.OrderDetails(orderid, productid, unitprice, qty, discount)

@@ -1,5 +1,4 @@
-﻿using Codifico.StoreSample.Api.Application.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Codifico.StoreSample.Api.Application.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,8 @@ namespace Codifico.StoreSample.Api.Controllers
     [ApiController]
     public class ShippersController : ControllerBase
     {
-        private ShippersAppService _shippersAppService;
-        public ShippersController(ShippersAppService shippersAppService)
+        private IShippersAppService _shippersAppService;
+        public ShippersController(IShippersAppService shippersAppService)
         {
             _shippersAppService = shippersAppService;
         }

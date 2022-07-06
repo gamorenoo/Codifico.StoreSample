@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Orders } from 'src/app/models/orders';
 import { PredictedOrders } from 'src/app/models/predicted-orders';
 import { StoreSampleService } from 'src/app/service/codifico.store.sample.api.service';
+import { StylingService } from 'src/app/service/styling.service';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -23,7 +24,6 @@ export class OrdersViewComponent implements OnInit {
     {
       ...this.toolbarPopupsCofig,
       options: {
-        // elementAttr: { style: 'color: red' },
         type: "danger",
         text: 'CLOSE',
         onClick: () => {
@@ -36,7 +36,8 @@ export class OrdersViewComponent implements OnInit {
   
   titlePopUp: string = '';
 
-  constructor(private storeSampleService: StoreSampleService) { }
+  constructor(private storeSampleService: StoreSampleService,
+    private stylingService: StylingService) { }
 
   ngOnInit(): void {
     this.getOrdersCustomer();
@@ -57,6 +58,16 @@ export class OrdersViewComponent implements OnInit {
 
   popupContentHeight = () => {
     return Math.round(window.innerHeight / 1.3);
+  }
+
+  onContentReady(e: any) {
+    setTimeout(() => {
+      const popUpEl = document.getElementById(this.popUpId);
+      if (popUpEl) {
+        this.stylingService.setTitleColorStyle(popUpEl, 'red');
+        this.stylingService.setTitleTextColorStyle(popUpEl, 'white');
+      }
+    }, 1);
   }
 
 }
